@@ -3,13 +3,26 @@ using System.Collections;
 
 public class Testscript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private Vector3 basepos;
+    private void Start()
+    {
+        basepos = transform.position;
+    }
+
+    private void OnMouseEnter()
+    {
+
+        transform.Translate(Vector3.forward);
+        
+    }
+
+    private void OnMouseExit()
+    {
+        float dist;
+        do
+        {
+            dist = Vector3.Distance(basepos, transform.position);
+            transform.Translate(basepos * Time.deltaTime);
+        } while (dist > 1);
+    }
 }
